@@ -35,5 +35,6 @@ sudo update-alternatives --install /usr/bin/x-session-manager x-session-manager 
 mv ~/.xinitrc ~/.xinitrc.bak
 echo "exec i3" >> ~/.xinitrc
 
-sudo apt install rxvt-unicode
+sudo apt -y install rxvt-unicode
+sudo apt -y install terminator
 
