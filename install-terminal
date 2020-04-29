@@ -52,3 +52,8 @@ wget -O $NICE_FONT_DIR/PowerlineSymbols.otf https://github.com/powerline/powerli
 wget -O $CONFIG_DIR/10-powerline-symbols.conf https://github.com/powerline/powerline/raw/develop/font/10-powerline-symbols.conf
 fc-cache -vf $NICE_FONT_DIR
 
+# time!
+
+sudo apt -y install systemd
+timedatectl --no-ask-password set-ntp 0 # automatic date time setup using ntp off!
+

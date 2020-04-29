@@ -29,3 +29,4 @@ sudo make install
 cd ~
 rm -rf ~/tmp-i3
 
+sudo update-alternatives --install /usr/bin/x-session-manager x-session-manager /usr/bin/i3 60
