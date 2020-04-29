@@ -57,8 +57,8 @@ fc-cache -vf $NICE_FONT_DIR
 # i3
 sudo apt install libxcb1-dev libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev libxcb-icccm4-dev libyajl-dev libstartup-notification0-dev libxcb-randr0-dev libev-dev libxcb-cursor-dev libxcb-xinerama0-dev libxcb-xkb-dev libxkbcommon-dev libxkbcommon-x11-dev autoconf xutils-dev libtool automake xcb libxcb-shape0 libxcb-shape0-dev
 
-mkdir tmp-i3
-cd tmp-i3
+mkdir ~/tmp-i3
+cd ~/tmp-i3
 # i added xclip up there at the very top ;)
 # i3: xcb-util-xrm
 git clone https://github.com/Airblader/xcb-util-xrm
@@ -67,9 +67,9 @@ git submodule update --init
 ./autogen.sh --prefix=/usr
 make
 sudo make install
-cd ..
 
 # i3: i3-gaps
+cd ~/tmp-i3
 git clone https://www.github.com/Airblader/i3 i3-gaps
 cd i3-gaps
 git checkout gaps && git pull
@@ -81,4 +81,4 @@ cd build
 make
 sudo make install
 cd ~
-
+rm -rf ~/tmp-i3
