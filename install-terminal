@@ -1,8 +1,9 @@
 #!/usr/bin/zsh
+# the internet says that if this doesn't work, /bin/sh will take over! cool.
 # just in case
 
 sudo apt -y update
-sudo apt -y install build-essential xclip
+sudo apt -y install build-essential xclip zsh
 sudo apt -y install curl git wget x11-xserver-utils
 
 # config dir is important and i thought it came before everything else
@@ -23,9 +24,6 @@ echo "syntax on" >> ~/.vimrc
 echo "filetype plugin indent on" >> ~/.vimrc
 
 # vim: TODO later add more here
-
-# zsh
-sudo apt -y install zsh
 
 # zsh: oh-my-zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -54,31 +52,3 @@ wget -O $NICE_FONT_DIR/PowerlineSymbols.otf https://github.com/powerline/powerli
 wget -O $CONFIG_DIR/10-powerline-symbols.conf https://github.com/powerline/powerline/raw/develop/font/10-powerline-symbols.conf
 fc-cache -vf $NICE_FONT_DIR
 
-# i3
-sudo apt install libxcb1-dev libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev libxcb-icccm4-dev libyajl-dev libstartup-notification0-dev libxcb-randr0-dev libev-dev libxcb-cursor-dev libxcb-xinerama0-dev libxcb-xkb-dev libxkbcommon-dev libxkbcommon-x11-dev autoconf xutils-dev libtool automake xcb libxcb-shape0 libxcb-shape0-dev
-
-mkdir ~/tmp-i3
-cd ~/tmp-i3
-# i added xclip up there at the very top ;)
-# i3: xcb-util-xrm
-git clone https://github.com/Airblader/xcb-util-xrm
-cd xcb-util-xrm
-git submodule update --init
-./autogen.sh --prefix=/usr
-make
-sudo make install
-
-# i3: i3-gaps
-cd ~/tmp-i3
-git clone https://www.github.com/Airblader/i3 i3-gaps
-cd i3-gaps
-git checkout gaps && git pull
-autoreconf --force --install
-rm -rf build
-mkdir build
-cd build
-../configure --prefix=/usr --sysconfdir=/etc --disable-sanitizers
-make
-sudo make install
-cd ~
-rm -rf ~/tmp-i3
