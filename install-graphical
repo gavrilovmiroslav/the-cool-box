@@ -3,34 +3,37 @@
 # i3
 sudo apt -y install build-essential libxcb1-dev libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev libxcb-icccm4-dev libyajl-dev libstartup-notification0-dev libxcb-randr0-dev libev-dev libxcb-cursor-dev libxcb-xinerama0-dev libxcb-xkb-dev libxkbcommon-dev libxkbcommon-x11-dev autoconf xutils-dev libtool automake xcb libxcb-shape0 libxcb-shape0-dev
 
-sudo apt -y install xorg
+sudo apt -y install xorg dmenu i3status
 
-mkdir ~/tmp-i3
-cd ~/tmp-i3
-# i added xclip up there at the very top ;)
-# i3: xcb-util-xrm
-git clone https://github.com/Airblader/xcb-util-xrm
-cd xcb-util-xrm
-git submodule update --init
-./autogen.sh --prefix=/usr
-make
-sudo make install
+# type "i3" return status 0 if it's installed, or -1 if it isn't, so...
+if ! type "i3" > /dev/null; then
+  mkdir ~/tmp-i3
+  cd ~/tmp-i3
+  git clone https://github.com/Airblader/xcb-util-xrm
+  cd xcb-util-xrm
+  git submodule update --init
+  ./autogen.sh --prefix=/usr
+  make
+  sudo make install
 
-# i3: i3-gaps
-cd ~/tmp-i3
-git clone https://www.github.com/Airblader/i3 i3-gaps
-cd i3-gaps
-git checkout gaps && git pull
-autoreconf --force --install
-rm -rf build
-mkdir build
-cd build
-../configure --prefix=/usr --sysconfdir=/etc --disable-sanitizers
-make
-sudo make install
-cd ~
-rm -rf ~/tmp-i3
-
+  # i3: i3-gaps
+  cd ~/tmp-i3
+  git clone https://www.github.com/Airblader/i3 i3-gaps
+  cd i3-gaps
+  git checkout gaps && git pull
+  autoreconf --force --install
+  rm -rf build
+  mkdir build
+  cd build
+  ../configure --prefix=/usr --sysconfdir=/etc --disable-sanitizers
+  make
+  sudo make install
+  cd ~
+  rm -rf ~/tmp-i3
+fi
 sudo update-alternatives --install /usr/bin/x-session-manager x-session-manager /usr/bin/i3 60
 mv ~/.xinitrc ~/.xinitrc.bak
 echo "exec i3" >> ~/.xinitrc
+
+sudo apt install rxvt-unicode
+
