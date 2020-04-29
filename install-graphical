@@ -30,3 +30,5 @@ cd ~
 rm -rf ~/tmp-i3
 
 sudo update-alternatives --install /usr/bin/x-session-manager x-session-manager /usr/bin/i3 60
+mv ~/.xinitrc ~/.xinitrc.bak
+echo "exec i3" >> ~/.xinitrc
