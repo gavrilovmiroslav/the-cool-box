@@ -186,5 +186,8 @@ bar {
 	status_command ~/.config/i3/tools/bumblebee-status -m cpu memory battery time pasink pasource -p time.format="%H:%M" -t solarized-dark-awesome 
 }
 
+# compton
+exec --no-startup-id compton &
+
 # nitrogen
 exec --no-startup-id nitrogen --restore &
