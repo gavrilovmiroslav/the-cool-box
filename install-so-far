@@ -1,0 +1,54 @@
+#!/usr/bin/zsh
+# just in case
+sudo apt -y remove vi nano
+sudo apt -y install curl git wget x11-xserver-utils
+
+# config dir is important and i thought it came before everything else
+mkdir -p .config
+
+# vim
+sudo apt -y install vim
+
+# vim: setup pathogen package manager
+mkdir -p ~/.vim/autoload
+mkdir -p ~/.vim/bundle
+curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+
+# vim: setup vimrc
+mv ~/.vimrc ~/.vimrc.bak
+echo "execute pathogen#infect()" >> ~/.vimrc
+echo "syntax on" >> ~/.vimrc
+echo "filetype plugin indent on" >> ~/.vimrc
+
+# vim: TODO later add more here
+
+# zsh
+sudo apt -y install zsh
+
+# zsh: oh-my-zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+# zsh: setup zshrc
+mv ~/.zshrc ~/.zshrc.bak
+echo "export ZSH=\"/home/mika/.oh-my-zsh\"" >> ~/.zshrc
+echo "ZSH_THEME=\"agnoster\"" >> ~/.zshrc
+echo "HYPHEN_INSENSITIVE=\"true\"" >> ~/.zshrc
+echo "plugins=(git)" >> ~/.zshrc
+echo "source \$ZSH/oh-my-zsh.sh" >> ~/.zshrc
+source ~/.zshrc
+
+# fonts!
+
+# fonts: fontconfig #1
+sudo apt -y install fontconfig
+
+NICE_FONT_DIR=~/.local/share/fonts
+CONFIG_DIR=~/.config/fontconfig/conf.d
+
+mkdir -p $NICE_FONT_DIR 
+mkdir -p $CONFIG_DIR 
+
+wget -O $NICE_FONT_DIR/PowerlineSymbols.otf https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf
+wget -O $CONFIG_DIR/10-powerline-symbols.conf https://github.com/powerline/powerline/raw/develop/font/10-powerline-symbols.conf
+fc-cache -vf $NICE_FONT_DIR
+
