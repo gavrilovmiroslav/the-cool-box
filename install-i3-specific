@@ -15,7 +15,9 @@ cp i3-config ~/.config/i3/config
 
 # niceties
 sudo apt -y install nitrogen compton
-mkdir -p ~/.config/
+mkdir -p ~/.config/nitrogen
+cp nitrogen.cfg ~/.config/nitrogen/
+cp bg-saved.cfg ~/.config/nitrogen/ 
 cp compton.conf ~/.config/compton.conf
 
 i3-msg restart
