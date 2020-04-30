@@ -1,0 +1,20 @@
+#!/usr/bin/zsh
+
+# install java
+
+if ! type java > /dev/null; then
+  sudo add-apt-repository ppa:linuxuprising/java
+  sudo apt -y update
+  sudo apt list oracle-java\*installer > java-version-string
+  sudo apt -y install `cat java-version-string | tail -1 | cut -d"/" -f1`
+  rm -rf java-version-string
+fi
+
+sudo update-alternatives --config java
+for javadir in /usr/lib/jvm/*; do  
+  sudo sh -c "echo 'JAVAHOME=$javadir' >> /etc/environment"
+  source /etc/environment
+  break
+done
+
+echo "run 'source /etc/environment' please"

@@ -1,0 +1,5 @@
+#!/usr/bin/zsh
+
+./install-dev-java
+./install-dev-node
+
