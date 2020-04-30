@@ -28,9 +28,6 @@ cp compton.conf ~/.config/compton.conf
 
 # applications
 
-# applications: file manager
-sudo apt -y install ranger
-
 # applications: print screen
 sudo apt -y install scrot viewnior
 mkdir -p ~/pictures/

@@ -47,6 +47,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
+bindsym $mod+Shift+d exec terminator -e ranger
 # printscreen
 bindsym Print exec scrot ~/pictures/Screenshot_%a-%d%b%y_%H%M.png -e 'viewnior $f'
 
