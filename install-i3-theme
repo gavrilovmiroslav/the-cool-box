@@ -1,0 +1,9 @@
+#!/usr/bin/zsh
+
+# theming
+git clone https://github.com/Mrcuve0/Aritim-Dark.git tmp-theme
+mkdir -p ~/.themes
+cp -r Aritim-Dark/GTK ~/.themes/
+gsettings set org.gnome.desktop.interface gtk-theme "Aritim-Dark-GTK"
+rm -rf tmp-theme
+

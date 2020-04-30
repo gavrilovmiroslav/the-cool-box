@@ -13,11 +13,25 @@ sudo apt -y install rofi
 mkdir -p ~/.config/i3/
 cp i3-config ~/.config/i3/config
 
-# niceties
+# window decorations
+
+sudo apt -y install lxappearance 
+sudo apt -y install gtk-chtheme 
+sudo apt -y install qt4-qtconfig
+
+# background & composition 
 sudo apt -y install nitrogen compton
 mkdir -p ~/.config/nitrogen
 cp nitrogen.cfg ~/.config/nitrogen/
 cp bg-saved.cfg ~/.config/nitrogen/ 
 cp compton.conf ~/.config/compton.conf
 
+# applications
+
+# applications: file manager
+sudo apt -y install ranger
+
+# applications: print screen
+sudo apt -y install scrot viewnior
+mkdir -p ~/pictures/
 i3-msg restart

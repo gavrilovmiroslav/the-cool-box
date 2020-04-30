@@ -2,3 +2,6 @@
 
 ./install-terminal 
 ./install-graphical 
+./install-i3-specific
+./install-i3-theme
+
