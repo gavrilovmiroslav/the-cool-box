@@ -6,4 +6,11 @@ sudo apt -y install ranger
 # applications: print screen
 sudo apt -y install scrot viewnior
 mkdir -p ~/pictures/
-i3-msg restart
+
+# chrome
+if ! type "google-chrome"; then
+  wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+  sudo apt install ./google-chrome-stable_current_amd64.deb
+  rm ./google-chrome-stable_current_amd64.deb
+fi
+
