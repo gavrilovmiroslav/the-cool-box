@@ -11,6 +11,10 @@ gaps inner 10
 smart_gaps on
 smart_gaps inverse_outer
 
+for_window [class="^.*"] border pixel 0
+default_border none
+default_floating_border none
+
 # i3 config file (v4)
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
